@@ -1,6 +1,14 @@
 class ArticlesController < ApplicationController
+  before_action :set_query
+
+  def set_query
+    @query = Article.ransack(params[:q])
+  end
+
   def index
-    @articles = Article.all
+    # @articles = Article.all
+    @query = Article.ransack(params[:q])
+    @articles = @query.result(distinct: true)
   end
 
   def show

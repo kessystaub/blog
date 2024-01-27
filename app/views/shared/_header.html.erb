@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href=<%= root_path %>>Blog</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: "nav-link active", 'aria-curren' => "page" %>
+        </li>
+      </ul>
+      <%= search_form_for @query, url: articles_path, class: "d-flex", role: "search" do |f| %>
+        <%= f.search_field :title_cont, class: "form-control me-2", type: "search", placeholder: "Search" %>
+        <%= f.button class: "btn btn-outline-success", type: "submit" do %>
+          <i class="bi bi-search"></i>
+        <% end %>
+      <% end %>
+      
+    </div>
+  </div>
+</nav>
+
+

@@ -12,11 +12,13 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body style="height: 100%; background-color: #F5F5F5;">
     <%= render "shared/header" %>
-    <div class="container">
-      <div class="row">
-        <%= yield %>
+      <div class="container">
+        <div class="row">
+          <%= yield %>
+        </div>
       </div>
   </body>
 </html>
+<!--#F5F5F5-->

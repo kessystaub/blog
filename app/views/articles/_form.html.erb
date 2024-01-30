@@ -20,10 +20,23 @@
     <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
   </div>
 
-  <div>
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+  
+
+  <% if @article.image.content_type.in?(%w[image/jpeg image/png image/jpg]) %>
+  <div class="position-relative">
+    <%= image_tag(@article.image_as_thumbnail, style: "margin-right: 10px;") if @article.image.attached?%>
+    <div class="btn-group-vertical position-absolute top-0">
+      <%= link_to "Remove Image", article_image_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, type: "button", class: "btn btn-danger" %>
+      <button type="button" class="btn btn-secondary">Change Image</button>
+    </div>
   </div>
+
+  <% else %>
+    <div>
+      <%= form.label :image %>
+      <%= form.file_field :image %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit %>

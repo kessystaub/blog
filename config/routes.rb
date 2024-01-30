@@ -4,5 +4,10 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :comments
+
+    resource :image, only: [:destroy]
+
   end
+
+
 end

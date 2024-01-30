@@ -7,18 +7,25 @@
     <br>
     <br>
     Our blog has <%= Article.public_count %> articles and counting!
-
-    <% @articles.each do |article| %>
-      <br>
-      <br>
-      <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title"><%= article.title %></h5>
-          <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><%= article.body %></p>
-          <%= link_to "Show this article", article, class: "btn btn-primary" %>
+    <br>
+    <br>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <% @articles.each do |article| %>
+        <div class="col">
+          <div class="card" style="height: 25rem;">
+            <div class="card-body"> 
+              <h5 class="card-title"><%= article.title %></h5>
+              <p class="card-subtitle mb-3"><small class="text-muted">Last updated <%= article.updated_at %></small></p>
+              <p class="card-text"><%= article.body %></p>
+            </div>
+            <div class="card-footer">
+                <%= link_to "Read more>", article %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-
 </div>
+
+

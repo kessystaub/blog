@@ -1,7 +1,11 @@
 <div class="container">
+  <br>
+  <% if @article.image.content_type.in?(%w[image/jpeg image/png image/jpg]) %>
+    <%= image_tag(@article.image_as_thumbnail) if @article.image.attached?%>
+  <% end %>
   <h1><%= @article.title %></h1>
   <small class="text-muted">Last updated <%= @article.updated_at %></small></p>
-
+  
   <p><%= @article.body %></p>
 </div>
 

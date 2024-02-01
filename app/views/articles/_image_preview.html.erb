@@ -6,12 +6,13 @@
                 <%= link_to "Remove Image", article_image_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, type: "button", class: "btn btn-danger position-absolute top-0" %>
             <% else %>
                 <%= image_tag "", data: { previews_target: "preview" }, style: "width: 270px; height: auto; margin-right: 10px;"%>
-                <%= link_to "Remove Image", article_image_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, type: "button", id: "remove_image_button", class: "btn btn-danger position-absolute top-0", style:"display: none;"%>
+                <%= button_tag "Remover Imagem", id: 'remove_image_button', type: 'button',  data: { action: "click->previews#remove"}, class: "btn btn-danger position-absolute top-0", style:"display: none;" %>
             <% end %>
         </div>
 
     <%= form.label :image %>
     <%= form.file_field :image,
+        id: "image_upload",
         direct_upload: true, 
         data: { previews_target: "input", action: "change->previews#preview"} %>
     

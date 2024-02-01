@@ -20,8 +20,19 @@ export default class extends Controller {
       preview.src = "";
     }
 
-    const secondButton = document.getElementById("remove_image_button");
-    secondButton.style.display = "inline";
+    const removeButton = document.getElementById("remove_image_button");
+    removeButton.style.display = "inline";
 
+  }
+
+  remove(){
+    const fileField = document.getElementById("image_upload")
+    fileField.value = null;
+
+    let preview = this.previewTarget;
+    preview.src = "";
+
+    const removeButton = document.getElementById("remove_image_button");
+    removeButton.style.display = "none";
   }
 }
